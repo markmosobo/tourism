@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Tour;
+use App\Models\User;
 
 class Review extends Model
 {
@@ -11,5 +13,15 @@ class Review extends Model
         'tour_id',
         'rating',
         'comment'
-    ];    
+    ];
+    
+    public function tour()
+    {
+        return $this->belongsTo(Tour::class);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }    
 }

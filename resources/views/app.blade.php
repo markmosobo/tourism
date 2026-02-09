@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Travel & Tours Company')
+@section('title', 'Twende Travel & Tours Company')
 
 @section('content')
 

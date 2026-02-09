@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Destination;
 
 class Tour extends Model
 {
@@ -16,5 +17,10 @@ class Tour extends Model
         'end_date',
         'max_participants',
         'availability_status'
-    ];    
+    ];  
+    
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
+    }    
 }
