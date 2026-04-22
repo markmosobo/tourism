@@ -3,7 +3,7 @@
 
       <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <img src="assets/img/logo.jpeg" alt="">
         <h1 class="sitename">Twende Tours</h1>
       </a>
 
