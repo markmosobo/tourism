@@ -11,7 +11,7 @@
               <div class="d-flex justify-content-center py-4">
                 <router-link to="/" class="logo d-flex align-items-center w-auto">
                   <img src="@/assets/img/algospacelogo.png" alt="">
-                  <span class="d-none d-lg-block" style="color: white;">REDRMS</span>
+                  <span class="d-none d-lg-block" style="color: white;">TWENDE TOURS</span>
                 </router-link>
               </div>
               <!-- End Logo -->
@@ -86,9 +86,8 @@
                     <p class="small mb-2" style="color: purple;">Quick Auto-Login</p>
                     <div class="d-grid gap-2">
                       <button type="button" class="btn btn-outline-success rounded-pill" @click="autoLogin('admin')">Admin</button>
-                      <button type="button" class="btn btn-outline-success rounded-pill" @click="autoLogin('landlord')">Landlord</button>
                       <button type="button" class="btn btn-outline-info rounded-pill" @click="autoLogin('manager')">Manager</button>
-                      <button type="button" class="btn btn-outline-warning rounded-pill" @click="autoLogin('tenant')">Tenant</button>
+                      <button type="button" class="btn btn-outline-warning rounded-pill" @click="autoLogin('tenant')">Tourist</button>
                     </div>
                   </div>
 

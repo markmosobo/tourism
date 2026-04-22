@@ -2,50 +2,28 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/', fn () => view('app'));
+Route::get('/about', fn () => view('about'));
+Route::get('/destinations', fn () => view('destinations'));
+Route::get('/tours', fn () => view('tours'));
+Route::get('/gallery', fn () => view('gallery'));
+Route::get('/contact', fn () => view('contact'));
+Route::get('/faq', fn () => view('faq'));
+Route::get('/privacy', fn () => view('privacy'));
+Route::get('/terms', fn () => view('terms'));
+Route::get('/destination-details', fn () => view('destination-details'));
+Route::get('/tour-details', fn () => view('tour-details'));
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::view('/404', '404');
 
-Route::get('/destinations', function () {
-    return view('destinations');
-});
 
-Route::get('/tours', function () {
-    return view('tours');
-});
 
-Route::get('/gallery', function () {
-    return view('gallery');
-});
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/404', function () {
-    return view('404');
-});
-
-Route::get('/destination-details', function () {
-    return view('destination-details');
-});
-
-Route::get('/faq', function () {
-    return view('faq');
-});
-
-Route::get('/privacy', function () {
-    return view('privacy');
-});
-
-Route::get('/terms', function () {
-    return view('terms');
-});
-
-Route::get('/tour-details', function () {
-    return view('tour-details');
-});
+/*
+|--------------------------------------------------------------------------
+| Vue dashboard (protected)
+|--------------------------------------------------------------------------
+*/
+Route::get('/spa/{any?}', function () {
+    return view('spa');
+})->where('any', '.*');

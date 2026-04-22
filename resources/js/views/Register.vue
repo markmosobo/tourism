@@ -8,7 +8,7 @@
                 <router-link to="/">
                   <a href="#" class="logo d-flex align-items-center w-auto">
                     <!-- <img src="/images/apex-logo.png" alt="April Properties Logo"> -->
-                    <span class="d-none d-lg-block" style="color: darkgreen;">REDRMS</span>
+                    <span class="d-none d-lg-block" style="color: darkgreen;">TWENDE TOURS</span>
                   </a>
                 </router-link>
               </div>

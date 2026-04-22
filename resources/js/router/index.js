@@ -1,34 +1,57 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+import axios from 'axios'
 
-import Login from '../views/Login.vue';
-import Register from '../views/Register.vue';
-import Home from '../views/Home.vue';
-import Profile from '../views/Profile.vue';
-
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import Home from '../views/Home.vue'
+import Profile from '../views/Profile.vue'
 
 const routes = [
-  // Public routes
-  { path: '/', name: 'index', component: Login },
-  { path: '/login', name: 'login', component: Login },
-  { path: '/register', name: 'register', component: Register },
-  { path: '/home', name: 'home', component: Home, meta: { requiresAuth: true } },
-  { path: '/profile', name: 'profile', component: Profile, meta: { requiresAuth: true } },
-];
+  { path: '/login', component: Login, meta: { guest: true } },
+  { path: '/register', component: Register, meta: { guest: true } },
+  { path: '/home', component: Home, meta: { requiresAuth: true } },
+  { path: '/profile', component: Profile, meta: { requiresAuth: true } },
+]
 
 const router = createRouter({
-  history: createWebHistory('/'),
-  routes,
-});
+  history: createWebHistory('/spa'),
+  routes
+})
 
-// 🔐 Global Auth Guard
-router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
+/*
+|--------------------------------------------------------------------------
+| SAFE AUTH GUARD (NO GLOBAL VARIABLES)
+|--------------------------------------------------------------------------
+*/
+let authChecked = false
+let isAuthenticated = false
 
-  if (to.meta.requiresAuth && !token) {
-    next({ path: '/login', replace: true });
-  } else {
-    next();
+router.beforeEach(async (to, from, next) => {
+
+  try {
+    // only check once per session
+    if (!authChecked) {
+      await axios.get('/api/user')
+      isAuthenticated = true
+      authChecked = true
+    }
+
+  } catch (e) {
+    isAuthenticated = false
+    authChecked = true
   }
-});
 
-export default router;
+  // if user is logged in but trying to access login/register
+  if (to.meta.guest && isAuthenticated) {
+    return next('/home')
+  }
+
+  // if route requires auth but user is not logged in
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    return next('/login')
+  }
+
+  next()
+})
+
+export default router
